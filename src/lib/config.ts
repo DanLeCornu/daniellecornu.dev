@@ -1,0 +1,1 @@
+export const NOTION_SECRET = process.env.NOTION_SECRET;
