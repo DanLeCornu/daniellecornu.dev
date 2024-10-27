@@ -18,18 +18,9 @@ export default async function Home() {
   const footerBlocks = await notion.blocks.children.list({ block_id: FOOTER_BLOCK_ID })
   const footerResults = footerBlocks.results as BlockObjectResponse[]
 
-  console.log(col2Results)
-  // const childBlocks = await Promise.all(
-  //   blocksWithChildren.map(async (block) => {
-  //     const childBlock = await notion.blocks.retrieve({ block_id: block.id })
-  //     return childBlock
-  //   }),
-  // )
-  // console.log(childBlocks)
-
   return (
     <div className="bg-gray-100">
-      <div className="px-24 py-44 text-default flex flex-col gap-8 max-w-[1280px] mx-auto">
+      <div className="px-8 md:px-24 py-16 md:py-44 text-default flex flex-col gap-8 max-w-[1280px] mx-auto">
         <p className="text-5xl font-bold sticky top-0 bg-gray-100 z-10 pt-2">{heading}</p>
         <div className="flex flex-col gap-8 md:flex-row">
           <div className="w-full md:w-2/3">
