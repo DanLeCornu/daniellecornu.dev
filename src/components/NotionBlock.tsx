@@ -23,7 +23,7 @@ export default function NotionBlock({ block }: { block: BlockObjectResponse }) {
     case "heading_1":
       if (block.heading_1.rich_text.length === 0) return <br />
       return (
-        <h1 className="mt-8 mb-2 text-2xl md:text-3xl font-bold sticky top-[52px] bg-gray-100 z-10 min-h-[36px]">
+        <h1 className="mt-8 mb-2 text-2xl md:text-3xl font-bold sticky top-[52px] bg-gray-100 z-20 min-h-[36px]">
           {block.heading_1.rich_text.map((richText, i) => (
             <NotionRichText key={i} richText={richText} />
           ))}
