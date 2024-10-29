@@ -23,34 +23,34 @@ export default function NotionBlock({ block }: { block: BlockObjectResponse }) {
     case "heading_1":
       if (block.heading_1.rich_text.length === 0) return <br />
       return (
-        <h1 className="mt-8 mb-2 text-2xl md:text-3xl font-bold sticky top-[52px] bg-gray-100 z-20 min-h-[36px]">
+        <h2 className="mt-8 mb-2 text-2xl md:text-3xl font-bold sticky top-[58px] bg-gray-100 z-20 pb-1">
           {block.heading_1.rich_text.map((richText, i) => (
             <NotionRichText key={i} richText={richText} />
           ))}
-        </h1>
+        </h2>
       )
-    case "heading_2":
-      if (block.heading_2.rich_text.length === 0) return <br />
-      return (
-        <h1 className="mt-2 mb-4 text-lg md:text-xl">
-          {block.heading_2.rich_text.map((richText, i) => (
-            <NotionRichText key={i} richText={richText} />
-          ))}
-        </h1>
-      )
+    // case "heading_2":
+    //   if (block.heading_2.rich_text.length === 0) return <br />
+    //   return (
+    //     <h1 className="mt-2 mb-4 text-lg md:text-xl">
+    //       {block.heading_2.rich_text.map((richText, i) => (
+    //         <NotionRichText key={i} richText={richText} />
+    //       ))}
+    //     </h1>
+    //   )
     case "heading_3":
       if (block.heading_3.rich_text.length === 0) return <br />
       return (
-        <h1
+        <h3
           className={cn(
-            "mt-3 mb-1 min-h-[50px] md:min-h-0 text-md md:text-lg sticky top-[88px] bg-gray-100 z-10",
+            "px-1 mt-3 mb-1 text-md md:text-lg bg-gray-100 z-10",
             NOTION_COLOR[block.heading_3.color as keyof typeof NOTION_COLOR],
           )}
         >
           {block.heading_3.rich_text.map((richText, i) => (
             <NotionRichText key={i} richText={richText} />
           ))}
-        </h1>
+        </h3>
       )
     case "divider":
       return <hr className="my-3 border-gray-300" />
@@ -67,7 +67,7 @@ export default function NotionBlock({ block }: { block: BlockObjectResponse }) {
       if (block.toggle.rich_text.length === 0) return <br />
       return (
         <details open>
-          <summary className="cursor-pointer leading-8">
+          <summary className="cursor-pointer leading-8 hover:opacity-75">
             {block.toggle.rich_text.map((richText, i) => (
               <NotionRichText key={i} richText={richText} />
             ))}

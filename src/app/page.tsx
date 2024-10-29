@@ -10,7 +10,7 @@ const FOOTER_BLOCK_ID = "12c884ef5c28805bb302eb19f052a7b6"
 export default async function Home() {
   const page = (await notion.pages.retrieve({ page_id: PAGE_ID })) as PageObjectResponse
   // @ts-ignore
-  const heading = page.properties.title.title?.[0]?.plain_text
+  const title = page.properties.title.title?.[0]?.plain_text
   const col1Blocks = await notion.blocks.children.list({ block_id: COLUMN_1_BLOCK_ID })
   const col1Results = col1Blocks.results as BlockObjectResponse[]
   const col2Blocks = await notion.blocks.children.list({ block_id: COLUMN_2_BLOCK_ID })
@@ -21,22 +21,25 @@ export default async function Home() {
   return (
     <div className="bg-gray-100">
       <div className="px-8 md:px-24 py-16 md:py-44 text-default flex flex-col gap-8 max-w-[1280px] mx-auto">
-        <p className="text-4xl md:text-5xl font-bold sticky top-0 bg-gray-100 z-30 pt-2 pb-1 md:pb-0">{heading}</p>
+        <h1 className="text-4xl md:text-5xl font-bold sticky top-0 h-[58px] bg-gray-100 z-30 pt-2">{title}</h1>
         <div className="flex flex-col gap-8 md:flex-row">
-          <div className="w-full md:w-2/3">
+          <section className="w-full md:w-2/3">
             {col1Results.map((block) => (
               <NotionBlock key={block.id} block={block} />
             ))}
-          </div>
-          <div className="w-full md:w-1/3">
+          </section>
+          <section className="w-full md:w-1/3">
             {col2Results.map((block) => (
               <NotionBlock key={block.id} block={block} />
             ))}
-          </div>
+            <div className="sticky top-[58px] bg-gray-100 h-[40px] z-30" />
+          </section>
         </div>
-        {footerResults.map((block) => (
-          <NotionBlock key={block.id} block={block} />
-        ))}
+        <section>
+          {footerResults.map((block) => (
+            <NotionBlock key={block.id} block={block} />
+          ))}
+        </section>
       </div>
     </div>
   )
