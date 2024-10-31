@@ -21,6 +21,14 @@ export default async function Home() {
   return (
     <div className="bg-gray-100">
       <div className="px-8 md:px-24 py-16 md:py-44 text-default flex flex-col gap-8 max-w-[1280px] mx-auto">
+        <a
+          href="https://public-4.s3.eu-central-1.amazonaws.com/Daniel_Le_Cornu.pdf"
+          target="_blank"
+          rel="noreferrer"
+          className="text-blue-500 underline w-fit"
+        >
+          Download PDF
+        </a>
         <h1 className="text-4xl md:text-5xl font-bold sticky top-0 h-[58px] bg-gray-100 z-30 pt-2">{title}</h1>
         <div className="flex flex-col gap-8 md:flex-row">
           <section className="w-full md:w-2/3">
