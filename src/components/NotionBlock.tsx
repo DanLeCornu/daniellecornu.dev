@@ -1,8 +1,10 @@
 import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints"
 import { NotionRichText } from "./NotionRichText"
 import { cn } from "@/lib/utils"
-import { notion, NOTION_COLOR } from "@/lib/notion"
+import { NOTION_COLOR } from "@/lib/notion"
 import NotionBlockChildren from "./NotionBlockChildren"
+
+const SKILL_BLOCK_TOGGLE_IDS = ["12c884ef-5c28-801d-b500-c7cbc7268b04", "12c884ef-5c28-801f-9b1e-fbdbaf425a70", "12c884ef-5c28-8005-9884-e099b79474c1"]
 
 export default function NotionBlock({ block }: { block: BlockObjectResponse }) {
   switch (block.type) {
@@ -65,8 +67,9 @@ export default function NotionBlock({ block }: { block: BlockObjectResponse }) {
       )
     case "toggle": {
       if (block.toggle.rich_text.length === 0) return <br />
+      const isOpen = SKILL_BLOCK_TOGGLE_IDS.includes(block.id)
       return (
-        <details open>
+        <details open={isOpen} id={block.id}>
           <summary className="cursor-pointer leading-8 hover:opacity-75">
             {block.toggle.rich_text.map((richText, i) => (
               <NotionRichText key={i} richText={richText} />

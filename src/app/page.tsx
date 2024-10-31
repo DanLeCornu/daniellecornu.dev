@@ -1,6 +1,7 @@
 import NotionBlock from "@/components/NotionBlock"
 import { notion } from "@/lib/notion"
 import type { BlockObjectResponse, PageObjectResponse } from "@notionhq/client/build/src/api-endpoints"
+import { DownloadIcon } from "lucide-react"
 
 const PAGE_ID = "12c884ef5c28803eba6ffc20593c850a"
 const COLUMN_1_BLOCK_ID = "12c884ef5c2880a392f0e35dc32b60f7"
@@ -20,13 +21,14 @@ export default async function Home() {
 
   return (
     <div className="bg-gray-100">
-      <div className="px-8 md:px-24 py-16 md:py-44 text-default flex flex-col gap-8 max-w-[1280px] mx-auto">
+      <div className="px-8 md:px-24 py-16 md:py-44 text-default flex flex-col gap-8 max-w-[1280px] mx-auto relative">
         <a
           href="https://public-4.s3.eu-central-1.amazonaws.com/Daniel_Le_Cornu.pdf"
           target="_blank"
           rel="noreferrer"
-          className="text-blue-500 underline w-fit"
+          className="text-blue-500 underline w-fit absolute left-8 md:left-auto md:right-24 top-8 md:top-24 hover:opacity-75 z-40"
         >
+          <DownloadIcon className="w-5 h-5 mr-1 mb-1 inline-block" />
           Download PDF
         </a>
         <h1 className="text-4xl md:text-5xl font-bold sticky top-0 h-[58px] bg-gray-100 z-30 pt-2">{title}</h1>
